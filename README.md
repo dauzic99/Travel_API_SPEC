@@ -1,20 +1,22 @@
-# API Spec
+<!-- # Travel API Spec -->
 
-## Authentication
+# Authentication
 
 All API must use this authentication
 
 Request :
 
 - Header :
-  - X-Api-Key : "your secret api key"
+  - Authorization : Bearer {$token}
 
-## Create Product
+# Travel Posting Customer
+
+## Create
 
 Request :
 
 - Method : POST
-- Endpoint : `/api/products`
+- Endpoint : `/travelpostingcustomer/create`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -22,10 +24,15 @@ Request :
 
 ```json
 {
-  "id": "string, unique",
-  "name": "string",
-  "price": "long",
-  "quantity": "integer"
+  "user_id": "integer", //diambil dari id customer
+  "city_origin": "string", //eg : Kota Samarinda
+  "city_destination": "string", //eg : Kota Balikpapan
+  "address_origin": "text", //eg : Jalan Mawar no 15
+  "address_destination": "text", //eg : Jalan Melati no 17
+  "date_dep": "date", //eg : 2022-08-15. Tanggal Keberangkatan
+  "passenger_count": "integer", //eg : 2. Jumlah Penumpang
+  "status": "integer", //eg : 1. status disamakan dengan nebeng nitip [1,2,3,4]
+  "description": "text" //deskripsi perjalanan
 }
 ```
 
@@ -33,134 +40,19 @@ Response :
 
 ```json
 {
-  "code": "number",
-  "status": "string",
+  "success": "boolean",
   "data": {
-    "id": "string, unique",
-    "name": "string",
-    "price": "long",
-    "quantity": "integer",
+    "user_id": "integer",
+    "city_origin": "string",
+    "city_destination": "string",
+    "address_origin": "text",
+    "address_destination": "text",
+    "date_dep": "date",
+    "passenger_count": "integer",
+    "status": "integer",
+    "description": "text",
     "createdAt": "date",
     "updatedAt": "date"
   }
-}
-```
-
-## Get Product
-
-Request :
-
-- Method : GET
-- Endpoint : `/api/products/{id_product}`
-- Header :
-  - Accept: application/json
-
-Response :
-
-```json
-{
-  "code": "number",
-  "status": "string",
-  "data": {
-    "id": "string, unique",
-    "name": "string",
-    "price": "long",
-    "quantity": "integer",
-    "createdAt": "date",
-    "updatedAt": "date"
-  }
-}
-```
-
-## Update Product
-
-Request :
-
-- Method : PUT
-- Endpoint : `/api/products/{id_product}`
-- Header :
-  - Content-Type: application/json
-  - Accept: application/json
-- Body :
-
-```json
-{
-  "name": "string",
-  "price": "long",
-  "quantity": "integer"
-}
-```
-
-Response :
-
-```json
-{
-  "code": "number",
-  "status": "string",
-  "data": {
-    "id": "string, unique",
-    "name": "string",
-    "price": "long",
-    "quantity": "integer",
-    "createdAt": "date",
-    "updatedAt": "date"
-  }
-}
-```
-
-## List Product
-
-Request :
-
-- Method : GET
-- Endpoint : `/api/products`
-- Header :
-  - Accept: application/json
-- Query Param :
-  - size : number,
-  - page : number
-
-Response :
-
-```json
-{
-  "code": "number",
-  "status": "string",
-  "data": [
-    {
-      "id": "string, unique",
-      "name": "string",
-      "price": "long",
-      "quantity": "integer",
-      "createdAt": "date",
-      "updatedAt": "date"
-    },
-    {
-      "id": "string, unique",
-      "name": "string",
-      "price": "long",
-      "quantity": "integer",
-      "createdAt": "date",
-      "updatedAt": "date"
-    }
-  ]
-}
-```
-
-## Delete Product
-
-Request :
-
-- Method : DELETE
-- Endpoint : `/api/products/{id_product}`
-- Header :
-  - Accept: application/json
-
-Response :
-
-```json
-{
-  "code": "number",
-  "status": "string"
 }
 ```
