@@ -89,6 +89,13 @@ Response :
       "description": "text",
       "createdAt": "date",
       "updatedAt": "date",
+      "passenger": [
+        {
+          "name": "string",
+          "relation": "string",
+          "phone_number": "string"
+        }
+      ],
       "user": {
         "id": "integer",
         "username": "string",
@@ -146,6 +153,13 @@ Response :
     "description": "text",
     "createdAt": "date",
     "updatedAt": "date",
+    "passenger": [
+      {
+        "name": "string",
+        "relation": "string",
+        "phone_number": "string"
+      }
+    ],
     "user": {
       "id": "integer",
       "username": "string",
@@ -216,6 +230,13 @@ Response :
     "description": "text",
     "createdAt": "date",
     "updatedAt": "date",
+    "passenger": [
+      {
+        "name": "string",
+        "relation": "string",
+        "phone_number": "string"
+      }
+    ],
     "user": {
       "id": "integer",
       "username": "string",
@@ -268,3 +289,154 @@ Response :
 API untuk data penumpang tambahan pada Travel Posting Customer
 
 Digunakan untuk penumpang kedua dan selebihnya
+
+## Create
+
+Request :
+
+- Method : POST
+- Endpoint : `/traveladdscustomer/create`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "travel_posting_customer_id": "integer", //diambil dari id travel posting customer
+  "name": "string", //eg : Bunga
+  "relation": "string", //eg : Step Sister
+  "phone_number": "string" //eg : 08778868543
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "id": "integer",
+    "travel_posting_customer_id": "integer",
+    "name": "string",
+    "relation": "string",
+    "phone_number": "string",
+    "createdAt": "date",
+    "updatedAt": "date"
+  }
+}
+```
+
+## List
+
+Request :
+
+- Method : GET
+- Endpoint : `/traveladdscustomer/list`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": [
+    {
+      "id": "integer",
+      "travel_posting_customer_id": "integer",
+      "name": "string",
+      "relation": "string",
+      "phone_number": "string",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer"
+    }
+  ]
+}
+```
+
+## Find By ID
+
+Request :
+
+- Method : GET
+- Endpoint : `/traveladdscustomer/{id}`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "id": "integer",
+    "travel_posting_customer_id": "integer",
+    "name": "string",
+    "relation": "string",
+    "phone_number": "string",
+    "createdAt": "date",
+    "updatedAt": "date",
+    "isDeleted": "integer"
+  }
+}
+```
+
+## Update
+
+Request :
+
+- Method : POST
+- Endpoint : `/traveladdscustomer/update/{id}`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "name": "string", //optional
+  "relation": "string", //optional
+  "phone_number": "string" //optional
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "id": "integer",
+    "travel_posting_customer_id": "integer",
+    "name": "string",
+    "relation": "string",
+    "phone_number": "string",
+    "createdAt": "date",
+    "updatedAt": "date",
+    "isDeleted": "integer"
+  }
+}
+```
+
+## Delete
+
+Request :
+
+- Method : GET
+- Endpoint : `/traveladdscustomer/delete/{id}`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": "Travel Additional Passenger has been deleted successfully"
+}
+```
