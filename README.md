@@ -42,6 +42,7 @@ Response :
 {
   "success": "boolean",
   "data": {
+    "id": "integer",
     "user_id": "integer",
     "city_origin": "string",
     "city_destination": "string",
@@ -74,6 +75,7 @@ Response :
   "success": "boolean",
   "data": [
     {
+      "id": "integer",
       "user_id": "integer",
       "city_origin": "string",
       "city_destination": "string",
@@ -130,6 +132,7 @@ Response :
 {
   "success": "boolean",
   "data": {
+    "id": "integer",
     "user_id": "integer",
     "city_origin": "string",
     "city_destination": "string",
@@ -166,5 +169,94 @@ Response :
       "isDeleted": "integer"
     }
   }
+}
+```
+
+## Update
+
+Request :
+
+- Method : POST
+- Endpoint : `/travelpostingcustomer/update/{id}`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "city_origin": "string", //optional
+  "city_destination": "string", //optional
+  "address_origin": "text", //optional
+  "address_destination": "text", //optional
+  "date_dep": "date", //optional
+  "passenger_count": "integer", //optional
+  "status": "integer", //optional
+  "description": "text" //optional
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "id": "integer",
+    "user_id": "integer",
+    "city_origin": "string",
+    "city_destination": "string",
+    "address_origin": "text",
+    "address_destination": "text",
+    "date_dep": "date",
+    "passenger_count": "integer",
+    "status": "integer",
+    "description": "text",
+    "createdAt": "date",
+    "updatedAt": "date",
+    "user": {
+      "id": "integer",
+      "username": "string",
+      "email": "string",
+      "password": "string",
+      "nik": "string",
+      "ktp_pict": "string",
+      "image": "string",
+      "gender": "string",
+      "birth": "date",
+      "address": "string",
+      "phone": "string",
+      "status": "integer",
+      "lat": "string",
+      "lang": "string",
+      "city": "string",
+      "role": "string",
+      "fcm": "string",
+      "otp": "string",
+      "blockedAt": "date",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer"
+    }
+  }
+}
+```
+
+## Delete
+
+Request :
+
+- Method : GET
+- Endpoint : `/travelpostingcustomer/delete/{id}`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": "Travel Post Customer has been deleted successfully"
 }
 ```
