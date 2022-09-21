@@ -11,6 +11,8 @@ Request :
 
 # Travel Posting Customer
 
+API untuk Travel Posting yang dilakukan oleh Customer
+
 ## Create
 
 Request :
@@ -260,3 +262,8 @@ Response :
   "data": "Travel Post Customer has been deleted successfully"
 }
 ```
+
+# Travel Additional Passenger
+
+API untuk data penumpang tambahan pada Travel Posting Customer
+Digunakan untuk penumpang kedua dan selebihnya
