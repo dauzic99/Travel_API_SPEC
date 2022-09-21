@@ -56,3 +56,115 @@ Response :
   }
 }
 ```
+
+## List
+
+Request :
+
+- Method : GET
+- Endpoint : `/travelpostingcustomer/list`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": [
+    {
+      "user_id": "integer",
+      "city_origin": "string",
+      "city_destination": "string",
+      "address_origin": "text",
+      "address_destination": "text",
+      "date_dep": "date",
+      "passenger_count": "integer",
+      "status": "integer",
+      "description": "text",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "user": {
+        "id": "integer",
+        "username": "string",
+        "email": "string",
+        "password": "string",
+        "nik": "string",
+        "ktp_pict": "string",
+        "image": "string",
+        "gender": "string",
+        "birth": "date",
+        "address": "string",
+        "phone": "string",
+        "status": "integer",
+        "lat": "string",
+        "lang": "string",
+        "city": "string",
+        "role": "string",
+        "fcm": "string",
+        "otp": "string",
+        "blockedAt": "date",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    }
+  ]
+}
+```
+
+## Find By ID
+
+Request :
+
+- Method : GET
+- Endpoint : `/travelpostingcustomer/{id}`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "user_id": "integer",
+    "city_origin": "string",
+    "city_destination": "string",
+    "address_origin": "text",
+    "address_destination": "text",
+    "date_dep": "date",
+    "passenger_count": "integer",
+    "status": "integer",
+    "description": "text",
+    "createdAt": "date",
+    "updatedAt": "date",
+    "user": {
+      "id": "integer",
+      "username": "string",
+      "email": "string",
+      "password": "string",
+      "nik": "string",
+      "ktp_pict": "string",
+      "image": "string",
+      "gender": "string",
+      "birth": "date",
+      "address": "string",
+      "phone": "string",
+      "status": "integer",
+      "lat": "string",
+      "lang": "string",
+      "city": "string",
+      "role": "string",
+      "fcm": "string",
+      "otp": "string",
+      "blockedAt": "date",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer"
+    }
+  }
+}
+```
