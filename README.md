@@ -89,6 +89,7 @@ Response :
       "description": "text",
       "createdAt": "date",
       "updatedAt": "date",
+      "isDeleted": "integer",
       "passenger": [
         {
           "id": "integer",
@@ -154,6 +155,7 @@ Response :
     "description": "text",
     "createdAt": "date",
     "updatedAt": "date",
+    "isDeleted": "integer",
     "passenger": [
       {
         "id": "integer",
@@ -232,6 +234,7 @@ Response :
     "description": "text",
     "createdAt": "date",
     "updatedAt": "date",
+    "isDeleted": "integer",
     "passenger": [
       {
         "id": "integer",
@@ -444,7 +447,7 @@ Response :
 }
 ```
 
-# Travel Posting
+# Travel Transactions
 
 Digunakan untuk "parent" yang menampung order customer pada driver
 
@@ -453,7 +456,7 @@ Digunakan untuk "parent" yang menampung order customer pada driver
 Request :
 
 - Method : POST
-- Endpoint : `/travelposting/create`
+- Endpoint : `/traveltrx/create`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -463,7 +466,6 @@ Request :
 {
   "rider_id": "integer",
   "date_dep": "date", //diambil dari posting customer pertama yang mau diambil
-  "description": "text", //eg : Lorem Ipsum
   "is_urgent": "integer", //eg : 0
   "seat_name": "array of string"
 }
@@ -502,7 +504,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/travelposting/list`
+- Endpoint : `/traveltrx/list`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -588,7 +590,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/travelposting/{id}`
+- Endpoint : `/traveltrx/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -672,7 +674,320 @@ Response :
 Request :
 
 - Method : POST
-- Endpoint : `/travelposting/update/{id}`
+- Endpoint : `/traveltrx/update/{id}`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "rider_id": "integer", //optional
+  "date_dep": "date", //optional
+  "is_urgent": "integer", //optional
+  "status": "integer", //optional
+  "dateTimeStart": "string", //optional
+  "dateTimeFinish": "string" //optional
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "id": "integer",
+    "rider_id": "integer",
+    "dateTimeStart": "date",
+    "dateTimeFinish": "date",
+    "status": "integer",
+    "date_dep": "date",
+    "is_urgent": "integer",
+    "createdAt": "date",
+    "updatedAt": "date",
+    "isDeleted": "integer",
+    "seat": [
+      {
+        "id": "integer",
+        "seat_name": "string",
+        "is_taken": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    ]
+  }
+}
+```
+
+## Delete
+
+Request :
+
+- Method : GET
+- Endpoint : `/traveltrx/delete/{id}`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": "Travel Transaction has been deleted successfully"
+}
+```
+
+# Travel Order
+
+Digunakan untuk order dan request driver pada customer
+
+## Create
+
+Request :
+
+- Method : POST
+- Endpoint : `/travelorder/create`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "travel_transaction_id": "integer",
+  "travel_posting_customer_id": "integer",
+  "time_dep": "string", //waktu keberangkatan driver
+  "description": "text", //eg : Lorem Ipsum
+  "seat_offer": [
+    {
+      "travel_seat_id": "integer",
+      "price": "integer"
+    }
+  ]
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "id": "integer",
+    "travel_transaction_id": "integer",
+    "travel_posting_customer_id": "integer",
+    "time_dep": "string",
+    "description": "text",
+    "status": "integer",
+    "note": "text",
+    "payment_type": "integer",
+    "total_price": "integer",
+    "createdAt": "date",
+    "updatedAt": "date",
+    "seat_offer": [
+      {
+        "id": "integer",
+        "travel_order_id": "integer",
+        "travel_seat_id": "integer",
+        "price": "integer",
+        "is_accepted": "integer",
+        "createdAt": "date",
+        "updatedAt": "date"
+      }
+    ]
+  }
+}
+```
+
+## List
+
+Request :
+
+- Method : GET
+- Endpoint : `/travelorder/list`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": [
+    {
+      "id": "integer",
+      "travel_transaction_id": "integer",
+      "travel_posting_customer_id": "integer",
+      "time_dep": "string",
+      "description": "text",
+      "status": "integer",
+      "note": "text",
+      "payment_type": "integer",
+      "total_price": "integer",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer",
+      "seat_offer": [
+        {
+          "id": "integer",
+          "travel_order_id": "integer",
+          "travel_seat_id": "integer",
+          "price": "integer",
+          "is_accepted": "integer",
+          "createdAt": "date",
+          "updatedAt": "date",
+          "isDeleted": "integer",
+          "travel_seat": {
+            "id": "integer",
+            "travel_transaction_id": "integer",
+            "seat_name": "string",
+            "is_taken": "integer",
+            "createdAt": "date",
+            "updatedAt": "date",
+            "isDeleted": "integer"
+          }
+        }
+      ],
+      "travel_posting_customer": {
+        "id": "integer",
+        "user_id": "integer",
+        "city_origin": "string",
+        "city_destination": "string",
+        "address_origin": "text",
+        "address_destination": "text",
+        "date_dep": "date",
+        "passenger_count": "integer",
+        "status": "integer",
+        "description": "text",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer",
+        "passenger": [
+          {
+            "id": "integer",
+            "name": "string",
+            "relation": "string",
+            "phone_number": "string"
+          }
+        ]
+      },
+      "travel_transaction": {
+        "id": "integer",
+        "rider_id": "integer",
+        "dateTimeStart": "date",
+        "dateTimeFinish": "date",
+        "status": "integer",
+        "date_dep": "date",
+        "is_urgent": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    }
+  ]
+}
+```
+
+## Find By ID
+
+Request :
+
+- Method : GET
+- Endpoint : `/travelorder/{id}`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": [
+    {
+      "id": "integer",
+      "travel_transaction_id": "integer",
+      "travel_posting_customer_id": "integer",
+      "time_dep": "string",
+      "description": "text",
+      "status": "integer",
+      "note": "text",
+      "payment_type": "integer",
+      "total_price": "integer",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer",
+      "seat_offer": [
+        {
+          "id": "integer",
+          "travel_order_id": "integer",
+          "travel_seat_id": "integer",
+          "price": "integer",
+          "is_accepted": "integer",
+          "createdAt": "date",
+          "updatedAt": "date",
+          "isDeleted": "integer",
+          "travel_seat": {
+            "id": "integer",
+            "travel_transaction_id": "integer",
+            "seat_name": "string",
+            "is_taken": "integer",
+            "createdAt": "date",
+            "updatedAt": "date",
+            "isDeleted": "integer"
+          }
+        }
+      ],
+      "travel_posting_customer": {
+        "id": "integer",
+        "user_id": "integer",
+        "city_origin": "string",
+        "city_destination": "string",
+        "address_origin": "text",
+        "address_destination": "text",
+        "date_dep": "date",
+        "passenger_count": "integer",
+        "status": "integer",
+        "description": "text",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer",
+        "passenger": [
+          {
+            "id": "integer",
+            "name": "string",
+            "relation": "string",
+            "phone_number": "string"
+          }
+        ]
+      },
+      "travel_transaction": {
+        "id": "integer",
+        "rider_id": "integer",
+        "dateTimeStart": "date",
+        "dateTimeFinish": "date",
+        "status": "integer",
+        "date_dep": "date",
+        "is_urgent": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    }
+  ]
+}
+```
+
+## Update
+
+Request :
+
+- Method : POST
+- Endpoint : `/travelorder/update/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -722,7 +1037,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/travelposting/delete/{id}`
+- Endpoint : `/travelorder/delete/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -732,6 +1047,6 @@ Response :
 ```json
 {
   "success": "boolean",
-  "data": "Travel Post has been deleted successfully"
+  "data": "Travel Order has been deleted successfully"
 }
 ```
