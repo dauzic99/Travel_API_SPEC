@@ -91,6 +91,7 @@ Response :
       "updatedAt": "date",
       "passenger": [
         {
+          "id": "integer",
           "name": "string",
           "relation": "string",
           "phone_number": "string"
@@ -155,6 +156,7 @@ Response :
     "updatedAt": "date",
     "passenger": [
       {
+        "id": "integer",
         "name": "string",
         "relation": "string",
         "phone_number": "string"
@@ -232,6 +234,7 @@ Response :
     "updatedAt": "date",
     "passenger": [
       {
+        "id": "integer",
         "name": "string",
         "relation": "string",
         "phone_number": "string"
@@ -438,5 +441,297 @@ Response :
 {
   "success": "boolean",
   "data": "Travel Additional Passenger has been deleted successfully"
+}
+```
+
+# Travel Posting
+
+Digunakan untuk "parent" yang menampung order customer pada driver
+
+## Create
+
+Request :
+
+- Method : POST
+- Endpoint : `/travelposting/create`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "rider_id": "integer",
+  "date_dep": "date", //diambil dari posting customer pertama yang mau diambil
+  "description": "text", //eg : Lorem Ipsum
+  "is_urgent": "integer", //eg : 0
+  "seat_name": "array of string"
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "id": "integer",
+    "rider_id": "integer",
+    "dateTimeStart": "date",
+    "dateTimeFinish": "date",
+    "status": "integer",
+    "date_dep": "date",
+    "is_urgent": "integer",
+    "createdAt": "date",
+    "updatedAt": "date",
+    "seat": [
+      {
+        "id": "integer",
+        "seat_name": "string",
+        "is_taken": "integer",
+        "createdAt": "date",
+        "updatedAt": "date"
+      }
+    ]
+  }
+}
+```
+
+## List
+
+Request :
+
+- Method : GET
+- Endpoint : `/travelposting/list`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": [
+    {
+      "id": "integer",
+      "rider_id": "integer",
+      "dateTimeStart": "date",
+      "dateTimeFinish": "date",
+      "status": "integer",
+      "date_dep": "date",
+      "is_urgent": "integer",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer",
+      "seat": [
+        {
+          "id": "integer",
+          "seat_name": "string",
+          "is_taken": "integer",
+          "createdAt": "date",
+          "updatedAt": "date",
+          "isDeleted": "integer"
+        }
+      ],
+      "main_rider": {
+        "id": "integer",
+        "name": "string",
+        "email": "string",
+        "nik": "string",
+        "ktp_pict": "string",
+        "image": "string",
+        "gender": "female",
+        "birth": "date",
+        "address": "string",
+        "phone": "string",
+        "password": "string",
+        "status": "integer",
+        "account_approve": "date",
+        "cityLocation": "string",
+        "role": "string",
+        "fcm": "string",
+        "otp": "string",
+        "account_regis": "date",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      },
+      "nebeng_rider": {
+        "id": "integer",
+        "rider_id": "integer",
+        "statusNebeng": "integer",
+        "sim": "string",
+        "simPict": "string",
+        "simExp": "date",
+        "stnkPict": "string",
+        "account_approved": "string",
+        "lat": "string",
+        "lang": "string",
+        "rating": "integer",
+        "approvedBy": "integer",
+        "vehicle_variant": "string",
+        "plat_number": "string",
+        "vehicle_color": "string",
+        "account_regis": "date",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    }
+  ]
+}
+```
+
+## Find By ID
+
+Request :
+
+- Method : GET
+- Endpoint : `/travelposting/{id}`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "id": "integer",
+    "rider_id": "integer",
+    "dateTimeStart": "date",
+    "dateTimeFinish": "date",
+    "status": "integer",
+    "date_dep": "date",
+    "is_urgent": "integer",
+    "createdAt": "date",
+    "updatedAt": "date",
+    "isDeleted": "integer",
+    "seat": [
+      {
+        "id": "integer",
+        "seat_name": "string",
+        "is_taken": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    ],
+    "main_rider": {
+      "id": "integer",
+      "name": "string",
+      "email": "string",
+      "nik": "string",
+      "ktp_pict": "string",
+      "image": "string",
+      "gender": "female",
+      "birth": "date",
+      "address": "string",
+      "phone": "string",
+      "password": "string",
+      "status": "integer",
+      "account_approve": "date",
+      "cityLocation": "string",
+      "role": "string",
+      "fcm": "string",
+      "otp": "string",
+      "account_regis": "date",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer"
+    },
+    "nebeng_rider": {
+      "id": "integer",
+      "rider_id": "integer",
+      "statusNebeng": "integer",
+      "sim": "string",
+      "simPict": "string",
+      "simExp": "date",
+      "stnkPict": "string",
+      "account_approved": "string",
+      "lat": "string",
+      "lang": "string",
+      "rating": "integer",
+      "approvedBy": "integer",
+      "vehicle_variant": "string",
+      "plat_number": "string",
+      "vehicle_color": "string",
+      "account_regis": "date",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer"
+    }
+  }
+}
+```
+
+## Update
+
+Request :
+
+- Method : POST
+- Endpoint : `/travelposting/update/{id}`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "rider_id": "integer", //optional
+  "date_dep": "date", //optional
+  "description": "text", //optional
+  "is_urgent": "integer" //optional
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "id": "integer",
+    "rider_id": "integer",
+    "dateTimeStart": "date",
+    "dateTimeFinish": "date",
+    "status": "integer",
+    "date_dep": "date",
+    "is_urgent": "integer",
+    "createdAt": "date",
+    "updatedAt": "date",
+    "isDeleted": "integer",
+    "seat": [
+      {
+        "id": "integer",
+        "seat_name": "string",
+        "is_taken": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    ]
+  }
+}
+```
+
+## Delete
+
+Request :
+
+- Method : GET
+- Endpoint : `/travelposting/delete/{id}`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": "Travel Post has been deleted successfully"
 }
 ```
