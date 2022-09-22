@@ -127,6 +127,84 @@ Response :
 }
 ```
 
+## List Status Open By Region
+
+AP Digunakan pada aplikasi driver untuk menampilkan list posting travel dari customer sesuai dengan region driver.
+
+Request :
+
+- Method : POST
+- Endpoint : `/travelpostingcustomer/liststatusopenbyregion`
+- Header :
+
+  - Content-Type: application/json
+  - Accept: application/json
+
+- Body :
+
+```json
+{
+  "city": "string" //Kota Samarinda
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": [
+    {
+      "id": "integer",
+      "user_id": "integer",
+      "city_origin": "string",
+      "city_destination": "string",
+      "address_origin": "text",
+      "address_destination": "text",
+      "date_dep": "date",
+      "passenger_count": "integer",
+      "status": "integer",
+      "description": "text",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer",
+      "passenger": [
+        {
+          "id": "integer",
+          "name": "string",
+          "relation": "string",
+          "phone_number": "string"
+        }
+      ],
+      "user": {
+        "id": "integer",
+        "username": "string",
+        "email": "string",
+        "password": "string",
+        "nik": "string",
+        "ktp_pict": "string",
+        "image": "string",
+        "gender": "string",
+        "birth": "date",
+        "address": "string",
+        "phone": "string",
+        "status": "integer",
+        "lat": "string",
+        "lang": "string",
+        "city": "string",
+        "role": "string",
+        "fcm": "string",
+        "otp": "string",
+        "blockedAt": "date",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    }
+  ]
+}
+```
+
 ## Find By ID
 
 Request :
