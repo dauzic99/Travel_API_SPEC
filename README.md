@@ -964,6 +964,13 @@ Response :
         "createdAt": "date",
         "updatedAt": "date",
         "isDeleted": "integer"
+      },
+      "travel_chat_room": {
+        "id": "integer",
+        "travel_order_id": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
       }
     }
   ]
@@ -1051,6 +1058,13 @@ Response :
         "status": "integer",
         "date_dep": "date",
         "is_urgent": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      },
+      "travel_chat_room": {
+        "id": "integer",
+        "travel_order_id": "integer",
         "createdAt": "date",
         "updatedAt": "date",
         "isDeleted": "integer"
@@ -1156,6 +1170,13 @@ Response :
         "createdAt": "date",
         "updatedAt": "date",
         "isDeleted": "integer"
+      },
+      "travel_chat_room": {
+        "id": "integer",
+        "travel_order_id": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
       }
     }
   ]
@@ -1178,5 +1199,83 @@ Response :
 {
   "success": "boolean",
   "data": "Travel Order has been deleted successfully"
+}
+```
+
+# Travel Chat Message
+
+API untuk menampung chat antara driver dan penumpang berdasarkan order yang telah terbuat
+
+## Create
+
+Request :
+
+- Method : POST
+- Endpoint : `/travelchatmsg/create`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "room_id": "integer", //diambil dari id travel chat room
+  "message": "text", //eg : Lorem Ipsum
+  "type": "integer" //eg : 1.  1 = driver, 2 = customer
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "id": "integer",
+    "room_id": "integer",
+    "message": "string",
+    "type": "string",
+    "createdAt": "date",
+    "updatedAt": "date"
+  }
+}
+```
+
+## List by Room Chat
+
+Request :
+
+- Method : POST
+- Endpoint : `/travelchatmsg/listbyroomchat`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "room_id": "integer" //diambil dari id travel chat room
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "room_id": "integer",
+    "messages": [
+      {
+        "id": "integer",
+        "room_id": "integer",
+        "message": "string",
+        "type": "string",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "date"
+      }
+    ]
+  }
 }
 ```
