@@ -95,7 +95,9 @@ Response :
           "id": "integer",
           "name": "string",
           "relation": "string",
-          "phone_number": "string"
+          "phone_number": "string",
+          "address_origin": "text",
+          "address_destination": "text"
         }
       ],
       "user": {
@@ -173,7 +175,9 @@ Response :
           "id": "integer",
           "name": "string",
           "relation": "string",
-          "phone_number": "string"
+          "phone_number": "string",
+          "address_origin": "text",
+          "address_destination": "text"
         }
       ],
       "user": {
@@ -239,7 +243,9 @@ Response :
         "id": "integer",
         "name": "string",
         "relation": "string",
-        "phone_number": "string"
+        "phone_number": "string",
+        "address_origin": "text",
+        "address_destination": "text"
       }
     ],
     "user": {
@@ -318,7 +324,9 @@ Response :
         "id": "integer",
         "name": "string",
         "relation": "string",
-        "phone_number": "string"
+        "phone_number": "string",
+        "address_origin": "text",
+        "address_destination": "text"
       }
     ],
     "user": {
@@ -390,7 +398,9 @@ Request :
   "travel_posting_customer_id": "integer", //diambil dari id travel posting customer
   "name": "string", //eg : Bunga
   "relation": "string", //eg : Step Sister
-  "phone_number": "string" //eg : 08778868543
+  "phone_number": "string", //eg : 08778868543
+  "address_origin": "text", //eg : Jalan Mawar no 15
+  "address_destination": "text" //eg : Jalan Melati no 17
 }
 ```
 
@@ -405,6 +415,8 @@ Response :
     "name": "string",
     "relation": "string",
     "phone_number": "string",
+    "address_origin": "text",
+    "address_destination": "text",
     "createdAt": "date",
     "updatedAt": "date"
   }
@@ -433,6 +445,8 @@ Response :
       "name": "string",
       "relation": "string",
       "phone_number": "string",
+      "address_origin": "text",
+      "address_destination": "text",
       "createdAt": "date",
       "updatedAt": "date",
       "isDeleted": "integer"
@@ -462,6 +476,8 @@ Response :
     "name": "string",
     "relation": "string",
     "phone_number": "string",
+    "address_origin": "text",
+    "address_destination": "text",
     "createdAt": "date",
     "updatedAt": "date",
     "isDeleted": "integer"
@@ -484,7 +500,9 @@ Request :
 {
   "name": "string", //optional
   "relation": "string", //optional
-  "phone_number": "string" //optional
+  "phone_number": "string", //optional
+  "address_origin": "text", //optional
+  "address_destination": "text" //optional
 }
 ```
 
@@ -499,6 +517,8 @@ Response :
     "name": "string",
     "relation": "string",
     "phone_number": "string",
+    "address_origin": "text",
+    "address_destination": "text",
     "createdAt": "date",
     "updatedAt": "date",
     "isDeleted": "integer"
