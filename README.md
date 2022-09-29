@@ -551,6 +551,9 @@ Digunakan untuk "parent" yang menampung order customer pada driver
 
 ## Create
 
+API digunakan pada saat driver ingin membuat penawaran. di backend cek apakah sudah ada data di table travel transaction dengan date_dep yang sama. jika belum ada maka create. jika sudah ada maka kembalikan data tersebut. available seat adalah seat yg is_takennya 0.
+Lalu untuk create travel transactions di backend, sekaligus create travel seat, dengan 5 row data. nama seat nya sebagai berikut : "Kursi depan","Kursi Tengah Kiri", "Kursi Tengah Kanan","Kursi Belakang Kiri","Kursi Belakang Kanan"
+
 Request :
 
 - Method : POST
@@ -564,8 +567,7 @@ Request :
 {
   "rider_id": "integer",
   "date_dep": "date", //diambil dari posting customer pertama yang mau diambil
-  "is_urgent": "integer", //eg : 0
-  "seat_name": "array of string"
+  "is_urgent": "integer" //eg : 0
 }
 ```
 
@@ -584,7 +586,7 @@ Response :
     "is_urgent": "integer",
     "createdAt": "date",
     "updatedAt": "date",
-    "seat": [
+    "available_seat": [
       {
         "id": "integer",
         "seat_name": "string",
