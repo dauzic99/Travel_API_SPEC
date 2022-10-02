@@ -838,7 +838,7 @@ Request :
   "travel_transaction_id": "integer",
   "travel_posting_customer_id": "integer",
   "time_dep": "string", //waktu keberangkatan driver
-  "description": "text", //eg : Lorem Ipsum
+  "description": "text", //eg : Lorem Ipsum //optional
   "seat_offer": [
     {
       "travel_seat_id": "integer",
