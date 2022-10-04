@@ -18,7 +18,7 @@ API untuk Travel Posting yang dilakukan oleh Customer
 Request :
 
 - Method : POST
-- Endpoint : `/travelpostingcustomer/create`
+- Endpoint : `/travel_posting_customer/create`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -65,7 +65,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/travelpostingcustomer/list`
+- Endpoint : `/travel_posting_customer/list`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -136,7 +136,7 @@ AP Digunakan pada aplikasi driver untuk menampilkan list posting travel dari cus
 Request :
 
 - Method : POST
-- Endpoint : `/travelpostingcustomer/liststatusopenbyregion`
+- Endpoint : `/travel_posting_customer/liststatusopenbyregion`
 - Header :
 
   - Content-Type: application/json
@@ -214,7 +214,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/travelpostingcustomer/{id}`
+- Endpoint : `/travel_posting_customer/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -281,7 +281,7 @@ Response :
 Request :
 
 - Method : POST
-- Endpoint : `/travelpostingcustomer/update/{id}`
+- Endpoint : `/travel_posting_customer/update/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -362,7 +362,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/travelpostingcustomer/delete/{id}`
+- Endpoint : `/travel_posting_customer/delete/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -387,7 +387,7 @@ Digunakan untuk penumpang kedua dan selebihnya
 Request :
 
 - Method : POST
-- Endpoint : `/traveladdscustomer/create`
+- Endpoint : `/travel_additional_passenger/create`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -428,7 +428,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/traveladdscustomer/list`
+- Endpoint : `/travel_additional_passenger/list`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -460,7 +460,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/traveladdscustomer/{id}`
+- Endpoint : `/travel_additional_passenger/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -490,7 +490,7 @@ Response :
 Request :
 
 - Method : POST
-- Endpoint : `/traveladdscustomer/update/{id}`
+- Endpoint : `/travel_additional_passenger/update/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -531,7 +531,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/traveladdscustomer/delete/{id}`
+- Endpoint : `/travel_additional_passenger/delete/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -850,7 +850,7 @@ Digunakan untuk order dan request driver pada customer
 Request :
 
 - Method : POST
-- Endpoint : `/travelorder/create`
+- Endpoint : `/travel_order/create`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -908,7 +908,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/travelorder/list`
+- Endpoint : `/travel_order/list`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -1005,7 +1005,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/travelorder/{id}`
+- Endpoint : `/travel_order/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -1102,7 +1102,7 @@ Response :
 Request :
 
 - Method : POST
-- Endpoint : `/travelorder/update/{id}`
+- Endpoint : `/travel_order/update/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -1211,7 +1211,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/travelorder/delete/{id}`
+- Endpoint : `/travel_order/delete/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
