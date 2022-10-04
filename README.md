@@ -558,7 +558,7 @@ Saat pertama kali dibuat, status = 1
 Request :
 
 - Method : POST
-- Endpoint : `/travel_transaction/create`
+- Endpoint : `/traveltrx/create`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -605,7 +605,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/travel_transaction/list`
+- Endpoint : `/traveltrx/list`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -691,7 +691,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/travel_transaction/{id}`
+- Endpoint : `/traveltrx/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -775,7 +775,7 @@ Response :
 Request :
 
 - Method : POST
-- Endpoint : `/travel_transaction/update/{id}`
+- Endpoint : `/traveltrx/update/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -827,7 +827,7 @@ Response :
 Request :
 
 - Method : GET
-- Endpoint : `/travel_transaction/delete/{id}`
+- Endpoint : `/traveltrx/delete/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
