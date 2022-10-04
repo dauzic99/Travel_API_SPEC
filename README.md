@@ -715,16 +715,18 @@ Response :
 {
   "success": "boolean",
   "data": {
-    "id": "integer",
-    "rider_id": "integer",
-    "dateTimeStart": "date",
-    "dateTimeFinish": "date",
-    "status": "integer",
-    "date_dep": "date",
-    "is_urgent": "integer",
-    "createdAt": "date",
-    "updatedAt": "date",
-    "isDeleted": "integer",
+    "travelTrx": {
+      "id": "integer",
+      "rider_id": "integer",
+      "dateTimeStart": "date",
+      "dateTimeFinish": "date",
+      "status": "integer",
+      "date_dep": "date",
+      "is_urgent": "integer",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer"
+    },
     "seat": [
       {
         "id": "integer",
