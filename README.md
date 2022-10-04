@@ -225,19 +225,21 @@ Response :
 {
   "success": "boolean",
   "data": {
-    "id": "integer",
-    "user_id": "integer",
-    "city_origin": "string",
-    "city_destination": "string",
-    "address_origin": "text",
-    "address_destination": "text",
-    "date_dep": "date",
-    "passenger_count": "integer",
-    "status": "integer",
-    "description": "text",
-    "createdAt": "date",
-    "updatedAt": "date",
-    "isDeleted": "integer",
+    "travelPostingCustomer": {
+      "id": "integer",
+      "user_id": "integer",
+      "city_origin": "string",
+      "city_destination": "string",
+      "address_origin": "text",
+      "address_destination": "text",
+      "date_dep": "date",
+      "passenger_count": "integer",
+      "status": "integer",
+      "description": "text",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer"
+    },
     "passenger": [
       {
         "id": "integer",
