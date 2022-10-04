@@ -173,11 +173,15 @@ Response :
       "passenger": [
         {
           "id": "integer",
+          "travel_posting_customer_id": "integer",
           "name": "string",
           "relation": "string",
           "phone_number": "string",
           "address_origin": "text",
-          "address_destination": "text"
+          "address_destination": "text",
+          "createdAt": "date",
+          "updatedAt": "date",
+          "isDeleted": "integer"
         }
       ],
       "user": {
@@ -308,19 +312,21 @@ Response :
 {
   "success": "boolean",
   "data": {
-    "id": "integer",
-    "user_id": "integer",
-    "city_origin": "string",
-    "city_destination": "string",
-    "address_origin": "text",
-    "address_destination": "text",
-    "date_dep": "date",
-    "passenger_count": "integer",
-    "status": "integer",
-    "description": "text",
-    "createdAt": "date",
-    "updatedAt": "date",
-    "isDeleted": "integer",
+    "travelPostingCustomer": {
+      "id": "integer",
+      "user_id": "integer",
+      "city_origin": "string",
+      "city_destination": "string",
+      "address_origin": "text",
+      "address_destination": "text",
+      "date_dep": "date",
+      "passenger_count": "integer",
+      "status": "integer",
+      "description": "text",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer"
+    },
     "passenger": [
       {
         "id": "integer",
@@ -328,7 +334,10 @@ Response :
         "relation": "string",
         "phone_number": "string",
         "address_origin": "text",
-        "address_destination": "text"
+        "address_destination": "text",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
       }
     ],
     "user": {
@@ -580,15 +589,17 @@ Response :
 {
   "success": "boolean",
   "data": {
-    "id": "integer",
-    "rider_id": "integer",
-    "dateTimeStart": "date",
-    "dateTimeFinish": "date",
-    "status": "integer",
-    "date_dep": "date",
-    "is_urgent": "integer",
-    "createdAt": "date",
-    "updatedAt": "date",
+    "travelTransaction": {
+      "id": "integer",
+      "rider_id": "integer",
+      "dateTimeStart": "date",
+      "dateTimeFinish": "date",
+      "status": "integer",
+      "date_dep": "date",
+      "is_urgent": "integer",
+      "createdAt": "date",
+      "updatedAt": "date"
+    },
     "available_seat": [
       {
         "id": "integer",
