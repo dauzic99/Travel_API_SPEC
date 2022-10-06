@@ -1139,6 +1139,127 @@ Response :
 ```json
 {
   "success": "boolean",
+  "data": {
+    "id": "integer",
+    "travel_transaction_id": "integer",
+    "travel_posting_customer_id": "integer",
+    "time_dep": "string",
+    "description": "text",
+    "status": "integer",
+    "note": "text",
+    "payment_type": "integer",
+    "total_price": "integer",
+    "createdAt": "date",
+    "updatedAt": "date",
+    "isDeleted": "integer",
+    "seat_offer": [
+      {
+        "id": "integer",
+        "travel_order_id": "integer",
+        "travel_seat_id": "integer",
+        "price": "integer",
+        "is_accepted": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer",
+        "travel_seat": {
+          "id": "integer",
+          "travel_transaction_id": "integer",
+          "seat_name": "string",
+          "is_taken": "integer",
+          "createdAt": "date",
+          "updatedAt": "date",
+          "isDeleted": "integer"
+        }
+      }
+    ],
+    "travel_posting_customer": {
+      "id": "integer",
+      "user_id": "integer",
+      "city_origin": "string",
+      "city_destination": "string",
+      "address_origin": "text",
+      "address_destination": "text",
+      "date_dep": "date",
+      "passenger_count": "integer",
+      "status": "integer",
+      "description": "text",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer",
+      "passenger": [
+        {
+          "id": "integer",
+          "name": "string",
+          "relation": "string",
+          "phone_number": "string"
+        }
+      ]
+    },
+    "travel_transaction": {
+      "id": "integer",
+      "rider_id": "integer",
+      "dateTimeStart": "date",
+      "dateTimeFinish": "date",
+      "status": "integer",
+      "date_dep": "date",
+      "is_urgent": "integer",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer"
+    },
+    "travel_chat_room": {
+      "id": "integer",
+      "travel_order_id": "integer",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer"
+    }
+  }
+}
+```
+
+## Delete
+
+Request :
+
+- Method : GET
+- Endpoint : `/travelorder/delete/{id}`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": "Travel Order has been deleted successfully"
+}
+```
+
+## Refuse All Offer By Customer Posting ID
+
+Request :
+
+- Method : POST
+- Endpoint : `/travelorder/refuseAllByPostingCustomer`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "travel_posting_customer_id": "integer"
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
   "data": [
     {
       "id": "integer",
@@ -1173,70 +1294,9 @@ Response :
             "isDeleted": "integer"
           }
         }
-      ],
-      "travel_posting_customer": {
-        "id": "integer",
-        "user_id": "integer",
-        "city_origin": "string",
-        "city_destination": "string",
-        "address_origin": "text",
-        "address_destination": "text",
-        "date_dep": "date",
-        "passenger_count": "integer",
-        "status": "integer",
-        "description": "text",
-        "createdAt": "date",
-        "updatedAt": "date",
-        "isDeleted": "integer",
-        "passenger": [
-          {
-            "id": "integer",
-            "name": "string",
-            "relation": "string",
-            "phone_number": "string"
-          }
-        ]
-      },
-      "travel_transaction": {
-        "id": "integer",
-        "rider_id": "integer",
-        "dateTimeStart": "date",
-        "dateTimeFinish": "date",
-        "status": "integer",
-        "date_dep": "date",
-        "is_urgent": "integer",
-        "createdAt": "date",
-        "updatedAt": "date",
-        "isDeleted": "integer"
-      },
-      "travel_chat_room": {
-        "id": "integer",
-        "travel_order_id": "integer",
-        "createdAt": "date",
-        "updatedAt": "date",
-        "isDeleted": "integer"
-      }
+      ]
     }
   ]
-}
-```
-
-## Delete
-
-Request :
-
-- Method : GET
-- Endpoint : `/travelorder/delete/{id}`
-- Header :
-  - Content-Type: application/json
-  - Accept: application/json
-
-Response :
-
-```json
-{
-  "success": "boolean",
-  "data": "Travel Order has been deleted successfully"
 }
 ```
 
