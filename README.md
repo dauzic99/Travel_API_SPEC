@@ -1240,6 +1240,8 @@ Response :
 
 ## Refuse All Offer By Customer Posting ID
 
+API ini digunakan untuk menolak semua offer/order yang diajukan driver terhadap posting si customer. Jadi berdasarkan id posting customer, cari semua order yg memakai id tersebut, dan ubah status menjadi 31. dan update Note di data travel_order tersebut menjadi "Customer merubah detail Pesanan Travel."
+
 Request :
 
 - Method : POST
@@ -1297,6 +1299,69 @@ Response :
       ]
     }
   ]
+}
+```
+
+## Refuse Offer
+
+API ini digunakan untuk menolak offer/order berdasarkan ID order dan ubah status menjadi 31. dan update alasannya (note).
+
+Request :
+
+- Method : POST
+- Endpoint : `/travelorder/refuseOffer`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "travel_order_id": "integer",
+  "note": "text"
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "id": "integer",
+    "travel_transaction_id": "integer",
+    "travel_posting_customer_id": "integer",
+    "time_dep": "string",
+    "description": "text",
+    "status": "integer",
+    "note": "text",
+    "payment_type": "integer",
+    "total_price": "integer",
+    "createdAt": "date",
+    "updatedAt": "date",
+    "isDeleted": "integer",
+    "seat_offer": [
+      {
+        "id": "integer",
+        "travel_order_id": "integer",
+        "travel_seat_id": "integer",
+        "price": "integer",
+        "is_accepted": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer",
+        "travel_seat": {
+          "id": "integer",
+          "travel_transaction_id": "integer",
+          "seat_name": "string",
+          "is_taken": "integer",
+          "createdAt": "date",
+          "updatedAt": "date",
+          "isDeleted": "integer"
+        }
+      }
+    ]
+  }
 }
 ```
 
