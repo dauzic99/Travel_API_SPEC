@@ -1348,7 +1348,23 @@ Response :
 
 API ini digunakan untuk menerima offer/order berdasarkan ID order dan ubah status menjadi 2. dan mengubah semua order pada customer posting tersebut selain dari pada ID order ini statusnya menjadi 13. dan note = "Customer menerima Penawaran dari driver lain"
 
-Kemudian berdasarkan payload "accepted_seat_id", ubah field "is_accepted" pada table seat_offer yang sesuai dengan id tersebut menjadi 1. kemudian cek table parent nya (travel_seat), ubah field "is_taken" menjaid 1
+Kemudian berdasarkan payload "accepted_seat_id", ubah field "is_accepted" pada table seat_offer yang sesuai dengan id tersebut menjadi 1. kemudian cek table parent nya (travel_seat), ubah field "is_taken" menjadi 1
+
+If "payment_type" == 2, maka create "user_transactions" dengan detail :
+
+```json
+{
+  "user_id": "body.user_id",
+  "order_id": "body.travel_order_id",
+  "trx_type": 2,
+  "datetime_saldo": "timestamp",
+  "amount": "body.total_price",
+  "note": "Pembayaran cashless travel order",
+  "order_type": "travel_order"
+}
+```
+
+terus update user balance, balance = balance-total_price
 
 Request :
 
