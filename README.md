@@ -1348,10 +1348,12 @@ Response :
 
 API ini digunakan untuk menerima offer/order berdasarkan ID order dan ubah status menjadi 2. dan mengubah semua order pada customer posting tersebut selain dari pada ID order ini statusnya menjadi 13. dan note = "Customer menerima Penawaran dari driver lain"
 
+Kemudian berdasarkan payload "accepted_seat_id", ubah field "is_accepted" pada table seat_offer yang sesuai dengan id tersebut menjadi 1. kemudian cek table parent nya (travel_seat), ubah field "is_taken" menjaid 1
+
 Request :
 
 - Method : POST
-- Endpoint : `/travelorder/refuseOffer`
+- Endpoint : `/travelorder/acceptOffer`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -1359,7 +1361,11 @@ Request :
 
 ```json
 {
-  "travel_order_id": "integer"
+  "travel_order_id": "integer",
+  "payment_type": "integer",
+  "total_price": "integer",
+  "user_id": "integer",
+  "accepted_seat_id": ["integer"]
 }
 ```
 
@@ -1381,7 +1387,7 @@ Response :
     "createdAt": "date",
     "updatedAt": "date",
     "isDeleted": "integer",
-    "seat_offer": [
+    "accepted_seat_offer": [
       {
         "id": "integer",
         "travel_order_id": "integer",
