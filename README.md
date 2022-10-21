@@ -699,6 +699,125 @@ Response :
 }
 ```
 
+## List By Rider ID
+
+Request :
+
+- Method : GET
+- Endpoint : `/traveltrx/listbyrider`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "rider_id": "integer"
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": [
+    {
+      "id": "integer",
+      "rider_id": "integer",
+      "dateTimeStart": "date",
+      "dateTimeFinish": "date",
+      "status": "integer",
+      "date_dep": "date",
+      "is_urgent": "integer",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer",
+      "seat": [
+        {
+          "id": "integer",
+          "seat_name": "string",
+          "is_taken": "integer",
+          "createdAt": "date",
+          "updatedAt": "date",
+          "isDeleted": "integer"
+        }
+      ],
+      "travel_order": [
+        {
+          "id": "integer",
+          "travel_transaction_id": "integer",
+          "travel_posting_customer_id": "integer",
+          "time_dep": "string",
+          "description": "text",
+          "status": "integer",
+          "note": "text",
+          "payment_type": "integer",
+          "total_price": "integer",
+          "createdAt": "date",
+          "updatedAt": "date",
+          "seat_offer": [
+            {
+              "id": "integer",
+              "travel_order_id": "integer",
+              "travel_seat_id": "integer",
+              "price": "integer",
+              "is_accepted": "integer",
+              "createdAt": "date",
+              "updatedAt": "date"
+            }
+          ]
+        }
+      ],
+      "main_rider": {
+        "id": "integer",
+        "name": "string",
+        "email": "string",
+        "nik": "string",
+        "ktp_pict": "string",
+        "image": "string",
+        "gender": "female",
+        "birth": "date",
+        "address": "string",
+        "phone": "string",
+        "password": "string",
+        "status": "integer",
+        "account_approve": "date",
+        "cityLocation": "string",
+        "role": "string",
+        "fcm": "string",
+        "otp": "string",
+        "account_regis": "date",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      },
+      "nebeng_rider": {
+        "id": "integer",
+        "rider_id": "integer",
+        "statusNebeng": "integer",
+        "sim": "string",
+        "simPict": "string",
+        "simExp": "date",
+        "stnkPict": "string",
+        "account_approved": "string",
+        "lat": "string",
+        "lang": "string",
+        "rating": "integer",
+        "approvedBy": "integer",
+        "vehicle_variant": "string",
+        "plat_number": "string",
+        "vehicle_color": "string",
+        "account_regis": "date",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    }
+  ]
+}
+```
+
 ## Find By ID
 
 Request :
