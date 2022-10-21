@@ -703,7 +703,7 @@ Response :
 
 Request :
 
-- Method : GET
+- Method : POST
 - Endpoint : `/traveltrx/listbyrider`
 - Header :
   - Content-Type: application/json
