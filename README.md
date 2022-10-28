@@ -1594,7 +1594,7 @@ Request :
   "payment_type": "integer",
   "total_price": "integer",
   "user_id": "integer",
-  "accepted_seat_id": ["integer"]
+  "accepted_seat_id": []
 }
 ```
 
@@ -1903,6 +1903,206 @@ Response :
         "createdAt": "date",
         "updatedAt": "date",
         "isDeleted": "date"
+      }
+    ]
+  }
+}
+```
+
+# Activity Driver
+
+API ini untuk halaman activity pada driver app
+
+## List Active By Rider ID
+
+List sebagai berikut :
+Data Nebeng Posting dengan Status = [1,2]
+
+Data Nitip Posting dengan Status = [1,2]
+
+Data Travel Transaction dengan Status = [1,2]
+
+Request :
+
+- Method : POST
+- Endpoint : `/activity_driver/listActiveByRiderId`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "rider_id": "integer" //diambil dari id driver
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "nebeng_posting": [
+      {
+        "id": "integer",
+        "rider_id": "integer",
+        "dateTimeStart": "date",
+        "dateTimeFinish": "date",
+        "city_origin": "string",
+        "city_destination": "string",
+        "dateDep": "date",
+        "dateArr": "date",
+        "timeDep": "time",
+        "timeArr": "time",
+        "seatAvail": "integer",
+        "price": "integer",
+        "status": "integer",
+        "status_update": "integer",
+        "note": "string",
+        "desc": "string",
+        "is_urgent": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    ],
+    "nitip_posting": [
+      {
+        "id": "integer",
+        "rider_id": "integer",
+        "dateTimeStart": "date",
+        "dateTimeFinish": "date",
+        "city_origin": "string",
+        "city_destination": "string",
+        "dateDep": "date",
+        "dateArr": "date",
+        "timeDep": "time",
+        "timeArr": "time",
+        "status": "integer",
+        "desc": "string",
+        "note": "string",
+        "is_open": "integer",
+        "is_urgent": "integer",
+        "is_update": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    ],
+    "travel_transaction": [
+      {
+        "id": "integer",
+        "rider_id": "integer",
+        "dateTimeStart": "date",
+        "dateTimeFinish": "date",
+        "status": "integer",
+        "dateDep": "date",
+        "desc": "string",
+        "note": "string",
+        "is_urgent": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    ]
+  }
+}
+```
+
+## List Done By Rider ID
+
+List sebagai berikut :
+Data Nebeng Posting dengan Status = [3,4]
+
+Data Nitip Posting dengan Status = [3,4]
+
+Data Travel Transaction dengan Status = [3,4]
+
+Urutkan berdasarkan Created At Descending
+
+Request :
+
+- Method : POST
+- Endpoint : `/activity_driver/listDoneByRiderId`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "rider_id": "integer" //diambil dari id driver
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "nebeng_posting": [
+      {
+        "id": "integer",
+        "rider_id": "integer",
+        "dateTimeStart": "date",
+        "dateTimeFinish": "date",
+        "city_origin": "string",
+        "city_destination": "string",
+        "dateDep": "date",
+        "dateArr": "date",
+        "timeDep": "time",
+        "timeArr": "time",
+        "seatAvail": "integer",
+        "price": "integer",
+        "status": "integer",
+        "status_update": "integer",
+        "note": "string",
+        "desc": "string",
+        "is_urgent": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    ],
+    "nitip_posting": [
+      {
+        "id": "integer",
+        "rider_id": "integer",
+        "dateTimeStart": "date",
+        "dateTimeFinish": "date",
+        "city_origin": "string",
+        "city_destination": "string",
+        "dateDep": "date",
+        "dateArr": "date",
+        "timeDep": "time",
+        "timeArr": "time",
+        "status": "integer",
+        "desc": "string",
+        "note": "string",
+        "is_open": "integer",
+        "is_urgent": "integer",
+        "is_update": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    ],
+    "travel_transaction": [
+      {
+        "id": "integer",
+        "rider_id": "integer",
+        "dateTimeStart": "date",
+        "dateTimeFinish": "date",
+        "status": "integer",
+        "dateDep": "date",
+        "desc": "string",
+        "note": "string",
+        "is_urgent": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
       }
     ]
   }
