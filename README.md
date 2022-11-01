@@ -975,6 +975,261 @@ Response :
 }
 ```
 
+## Start Pick Up
+
+Ubah Status Travel Transaction menjadi 2
+
+Ubah status semua travel_order dari array travel_order_id menjadi 3
+
+kasih notif ke penumpang berdasarkan order id tersebut. order->posting_customer->user.
+
+title : Penjnemputan dimulai
+
+Message : Driver sedang dalam perjalanan menjemput anda. Mohon ditunggu di alamat penjemputan
+
+Request :
+
+- Method : POST
+- Endpoint : `/traveltrx/startPickUp`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "travel_transaction_id": "integer", //optional
+  "travel_order_id": ["integer"] //optional
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "travel_transaction": {
+      "id": "integer",
+      "rider_id": "integer",
+      "dateTimeStart": "date",
+      "dateTimeFinish": "date",
+      "status": "integer",
+      "date_dep": "date",
+      "is_urgent": "integer",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer",
+      "seat": [
+        {
+          "id": "integer",
+          "seat_name": "string",
+          "is_taken": "integer",
+          "createdAt": "date",
+          "updatedAt": "date",
+          "isDeleted": "integer"
+        }
+      ]
+    },
+    "travel_order":[
+      {
+        "id": "integer",
+        "travel_transaction_id": "integer",
+        "travel_posting_customer_id": "integer",
+        "time_dep": "string",
+        "description": "text",
+        "status": "integer",
+        "note": "text",
+        "payment_type": "integer",
+        "total_price": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "seat_offer": [
+          {
+            "id": "integer",
+            "travel_order_id": "integer",
+            "travel_seat_id": "integer",
+            "price": "integer",
+            "is_accepted": "integer",
+            "createdAt": "date",
+            "updatedAt": "date"
+          }
+        ]
+      }
+    ]
+  }
+```
+
+## Start Travel
+
+Ubah Status Travel Transaction menjadi 3
+
+Ubah status semua travel_order dari array travel_order_id menjadi 4
+
+kasih notif ke penumpang berdasarkan order id tersebut. order->posting_customer->user.
+
+title : Perjalanan Travel Dimulai
+
+Message : Anda sedang dalam perjalanan menuju kota tujuan
+
+Request :
+
+- Method : POST
+- Endpoint : `/traveltrx/startTravelTrx`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "travel_transaction_id": "integer", //optional
+  "travel_order_id": ["integer"] //optional
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "travel_transaction": {
+      "id": "integer",
+      "rider_id": "integer",
+      "dateTimeStart": "date",
+      "dateTimeFinish": "date",
+      "status": "integer",
+      "date_dep": "date",
+      "is_urgent": "integer",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer",
+      "seat": [
+        {
+          "id": "integer",
+          "seat_name": "string",
+          "is_taken": "integer",
+          "createdAt": "date",
+          "updatedAt": "date",
+          "isDeleted": "integer"
+        }
+      ]
+    },
+    "travel_order":[
+      {
+        "id": "integer",
+        "travel_transaction_id": "integer",
+        "travel_posting_customer_id": "integer",
+        "time_dep": "string",
+        "description": "text",
+        "status": "integer",
+        "note": "text",
+        "payment_type": "integer",
+        "total_price": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "seat_offer": [
+          {
+            "id": "integer",
+            "travel_order_id": "integer",
+            "travel_seat_id": "integer",
+            "price": "integer",
+            "is_accepted": "integer",
+            "createdAt": "date",
+            "updatedAt": "date"
+          }
+        ]
+      }
+    ]
+  }
+```
+
+## Finish Travel
+
+Ubah Status Travel Transaction menjadi 4
+
+Ubah status semua travel_order dari array travel_order_id menjadi 5
+
+kasih notif ke penumpang berdasarkan order id tersebut. order->posting_customer->user.
+
+title : Perjalanan Travel Selesai
+
+Message : Anda sudah sampai di kota tujuan.
+
+Request :
+
+- Method : POST
+- Endpoint : `/traveltrx/finishTravelTrx`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "travel_transaction_id": "integer", //optional
+  "travel_order_id": ["integer"] //optional
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "travel_transaction": {
+      "id": "integer",
+      "rider_id": "integer",
+      "dateTimeStart": "date",
+      "dateTimeFinish": "date",
+      "status": "integer",
+      "date_dep": "date",
+      "is_urgent": "integer",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer",
+      "seat": [
+        {
+          "id": "integer",
+          "seat_name": "string",
+          "is_taken": "integer",
+          "createdAt": "date",
+          "updatedAt": "date",
+          "isDeleted": "integer"
+        }
+      ]
+    },
+    "travel_order":[
+      {
+        "id": "integer",
+        "travel_transaction_id": "integer",
+        "travel_posting_customer_id": "integer",
+        "time_dep": "string",
+        "description": "text",
+        "status": "integer",
+        "note": "text",
+        "payment_type": "integer",
+        "total_price": "integer",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "seat_offer": [
+          {
+            "id": "integer",
+            "travel_order_id": "integer",
+            "travel_seat_id": "integer",
+            "price": "integer",
+            "is_accepted": "integer",
+            "createdAt": "date",
+            "updatedAt": "date"
+          }
+        ]
+      }
+    ]
+  }
+```
+
 # Travel Order
 
 Digunakan untuk order dan request driver pada customer
