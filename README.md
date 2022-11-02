@@ -1404,7 +1404,7 @@ Request :
 
 ```json
 {
-  "travel_trx_id": "integer"
+  "travel_transaction_id": "integer"
 }
 ```
 
@@ -1498,7 +1498,7 @@ Request :
 
 ```json
 {
-  "travel_trx_id": "integer"
+  "travel_transaction_id": "integer"
 }
 ```
 
