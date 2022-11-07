@@ -387,6 +387,124 @@ Response :
 }
 ```
 
+## Cancel Post
+
+API Digunakan pada aplikasi customer untuk melakukan cancel posting.
+
+ubah status travel posting customer menjadi = 4
+
+lalu ubah travel order yang travel_posting_customer_id = body.travel_posting_customer, statusnya menjadi = 13, note = "Customer Membatalkan Posting"
+
+lalu berikan notifikasi ke pada driver per travel order (travel_order -> travel_trx -> rider_id) seperti dibawah ini
+
+title : Tawaran Ditolak
+
+message : "Mohon maaf, tawaran anda untuk perjalanan travel ditolak karena customer {nama_customer} membatalkan postingan"
+
+Request :
+
+- Method : POST
+- Endpoint : `/travelpostingcustomer/cancel`
+- Header :
+
+  - Content-Type: application/json
+  - Accept: application/json
+
+- Body :
+
+```json
+{
+  "travel_posting_customer_id": "integer"
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "id": "integer",
+    "user_id": "integer",
+    "city_origin": "string",
+    "city_destination": "string",
+    "address_origin": "text",
+    "address_destination": "text",
+    "date_dep": "date",
+    "passenger_count": "integer",
+    "status": "integer",
+    "description": "text",
+    "createdAt": "date",
+    "updatedAt": "date",
+    "isDeleted": "integer",
+    "passenger": [
+      {
+        "id": "integer",
+        "travel_posting_customer_id": "integer",
+        "name": "string",
+        "relation": "string",
+        "phone_number": "string",
+        "address_origin": "text",
+        "address_destination": "text",
+        "createdAt": "date",
+        "updatedAt": "date",
+        "isDeleted": "integer"
+      }
+    ],
+    "user": {
+      "id": "integer",
+      "username": "string",
+      "email": "string",
+      "password": "string",
+      "nik": "string",
+      "ktp_pict": "string",
+      "image": "string",
+      "gender": "string",
+      "birth": "date",
+      "address": "string",
+      "phone": "string",
+      "status": "integer",
+      "lat": "string",
+      "lang": "string",
+      "city": "string",
+      "role": "string",
+      "fcm": "string",
+      "otp": "string",
+      "blockedAt": "date",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "isDeleted": "integer"
+    }
+  },
+  "travel_order": [
+    {
+      "id": "integer",
+      "travel_transaction_id": "integer",
+      "travel_posting_customer_id": "integer",
+      "time_dep": "string",
+      "description": "text",
+      "status": "integer",
+      "note": "text",
+      "payment_type": "integer",
+      "total_price": "integer",
+      "createdAt": "date",
+      "updatedAt": "date",
+      "seat_offer": [
+        {
+          "id": "integer",
+          "travel_order_id": "integer",
+          "travel_seat_id": "integer",
+          "price": "integer",
+          "is_accepted": "integer",
+          "createdAt": "date",
+          "updatedAt": "date"
+        }
+      ]
+    }
+  ]
+}
+```
+
 # Travel Additional Passenger
 
 API untuk data penumpang tambahan pada Travel Posting Customer
@@ -1152,6 +1270,8 @@ Ubah Status Travel Transaction menjadi 4
 Ubah status semua travel_order dari array travel_order_id menjadi 5
 
 kasih notif ke penumpang berdasarkan order id tersebut. order->posting_customer->user.
+
+ubah status posting_customer per travel_order yang bersangkutan menjadi 3.
 
 title : Perjalanan Travel Selesai
 
