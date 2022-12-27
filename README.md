@@ -2582,3 +2582,223 @@ Response :
   }
 }
 ```
+
+# Notifications
+
+## Send To All Rider
+
+Mengirim push notif ke semua driver
+
+Request :
+
+- Method : POST
+- Endpoint : `/notifications/sendToAllRider`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "title": "string",
+  "message": "text"
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "status": "Notifications sent successfully",
+    "title": "string",
+    "message": "text"
+  }
+}
+```
+
+## Send To Rider By Region
+
+Mengirim push notif ke semua driver berdasarkan region
+
+Request :
+
+- Method : POST
+- Endpoint : `/notifications/sendToRiderByRegion`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "title": "string",
+  "message": "text",
+  "region_id": "integer" // ambil dari region id
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "status": "Notifications sent successfully",
+    "title": "string",
+    "message": "text",
+    "region": {
+      "id": "integer",
+      "name": "string"
+    }
+  }
+}
+```
+
+## Send To Rider By City
+
+Mengirim push notif ke semua driver berdasarkan kota driver
+
+Request :
+
+- Method : POST
+- Endpoint : `/notifications/sendToRiderByCity`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "title": "string",
+  "message": "text",
+  "city": "string" // ambil dari city.name
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "status": "Notifications sent successfully",
+    "title": "string",
+    "message": "text",
+    "city": {
+      "id": "integer",
+      "name": "string"
+    }
+  }
+}
+```
+
+## Send To All Customer
+
+Mengirim push notif ke semua customer
+
+Request :
+
+- Method : POST
+- Endpoint : `/notifications/sendToAllCustomer`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "title": "string",
+  "message": "text"
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "status": "Notifications sent successfully",
+    "title": "string",
+    "message": "text"
+  }
+}
+```
+
+## Send To Customer By Region
+
+Mengirim push notif ke semua customer berdasarkan region
+
+Request :
+
+- Method : POST
+- Endpoint : `/notifications/sendToCustomerByRegion`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "title": "string",
+  "message": "text",
+  "region_id": "integer" // ambil dari region id
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "status": "Notifications sent successfully",
+    "title": "string",
+    "message": "text",
+    "region": {
+      "id": "integer",
+      "name": "string"
+    }
+  }
+}
+```
+
+## Send To Customer By City
+
+Mengirim push notif ke semua customer berdasarkan kota customer
+
+Request :
+
+- Method : POST
+- Endpoint : `/notifications/sendToCustomerByCity`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+- Body :
+
+```json
+{
+  "title": "string",
+  "message": "text",
+  "city": "string" // ambil dari city.name
+}
+```
+
+Response :
+
+```json
+{
+  "success": "boolean",
+  "data": {
+    "status": "Notifications sent successfully",
+    "title": "string",
+    "message": "text",
+    "city": {
+      "id": "integer",
+      "name": "string"
+    }
+  }
+}
+```
